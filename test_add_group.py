@@ -13,21 +13,15 @@ class TestTestaddgroup():
 
 
   def test_add_group(self):
-    self.open_home_page()
     self.login(username="admin", password="secret")
-    self.open_groups_page()
     self.create_group(Group(name="new2", header="new2", footer="new2"))
-    self.return_to_groups_page()
     self.logout()
     self.driver.close()
 
 
   def test_add_empty_group(self):
-    self.open_home_page()
     self.login(username="admin", password="secret")
-    self.open_groups_page()
     self.create_group(Group(name="", header="", footer=""))
-    self.return_to_groups_page()
     self.logout()
     self.driver.close()
 
@@ -39,6 +33,7 @@ class TestTestaddgroup():
     self.driver.find_element(By.LINK_TEXT, "groups").click()
 
   def create_group(self, group):
+    self.open_groups_page()
     # init group creation
     self.driver.find_element(By.XPATH, "(//input[@name=\'new\'])[2]").click()
     # fill group form
@@ -47,11 +42,14 @@ class TestTestaddgroup():
     self.driver.find_element(By.NAME, "group_footer").send_keys(group.footer)
     # submit group creation
     self.driver.find_element(By.NAME, "submit").click()
+    # return_to_groups_page
+    self.return_to_groups_page()
 
   def open_groups_page(self):
     self.driver.find_element(By.LINK_TEXT, "groups").click()
 
   def login(self, username, password):
+    self.open_home_page()
     self.driver.find_element(By.NAME, "user").send_keys(username)
     self.driver.find_element(By.NAME, "pass").send_keys(password)
     self.driver.find_element(By.XPATH, "//input[@value=\'Login\']").click()
