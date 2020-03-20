@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 
 class GroupHelper:
     def __init__(self,app):
@@ -21,3 +22,4 @@ class GroupHelper:
 
     def open_groups_page(self):
         self.app.driver.find_element(By.LINK_TEXT, "groups").click()
+

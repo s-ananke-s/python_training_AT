@@ -32,14 +32,16 @@ class ContactHelper:
 
 
 
-        self.app.driver.find_element(By.NAME, "bday").click()
-        dropdown = self.app.driver.find_element(By.NAME, "bday")
-        dropdown.find_element(By.XPATH, "//option[. = '14']").click()
-        self.app.driver.find_element(By.NAME, "bmonth").click()
-        dropdown = self.app.driver.find_element(By.NAME, "bmonth")
-        dropdown.find_element(By.XPATH, "//option[. = 'June']").click()
+        #self.app.driver.find_element(By.NAME, "bday").click()
+        ##dropdown.find_element(By.XPATH, "//option[. = '14']").click()
 
+        self.app.driver.find_element(By.XPATH, "(// select[@name=\'bday\']\option[text()=" + contact.bday + "]").click()
 
+        #self.app.driver.find_element(By.NAME, "bmonth").click()
+        #dropdown = self.app.driver.find_element(By.NAME, "bmonth")
+        #dropdown.find_element(By.XPATH, "//option[. = 'June']").click()
+
+        self.app.driver.find_element(By.XPATH, "// select[@name=\'bmonth\']\option[text()=" + contact.bmonth + "]").click()
 
         # submit contact creation
         self.app.driver.find_element(By.XPATH, "(//input[@name=\'submit\'])[2]").click()
