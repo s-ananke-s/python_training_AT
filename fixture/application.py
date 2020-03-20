@@ -10,7 +10,7 @@ class Application:
         self.vars = {}
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
-        self.group = ContactHelper(self)
+        self.contact = ContactHelper(self)
         # нужно добавтьб что-то чтобы не вызывать from selenium.webdriver.common.by import By в session.py
 
 
